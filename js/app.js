@@ -4,33 +4,33 @@ apiURL = "https://dev-css-vn.pantheonsite.io/api/movies"
 
 var App = Vue.extend({});
 
-var movieList = Vue.extend({
-  template: '#movie-list-template',
+var blogList = Vue.extend({
+  template: '#blog-list-template',
 
   data: function() {
     return {
-      movies: '',
+      blogs: '',
       liveFilter: '',
       genreFilter: '',
       genres: '',
-      movie: ''
+      blog: ''
     }
   },
 
   ready: function() {
-    this.getMovies()
+    this.getblogs()
   },
 
   methods: {
-    getMovies: function() {
-      this.$set('movie', '');
-      this.$http.get(apiURL, function(movies) {
-        this.$set('movies', movies);
+    getblogs: function() {
+      this.$set('blog', '');
+      this.$http.get(apiURL, function(blogs) {
+        this.$set('blogs', blogs);
 
         // Automatic get the genres from drupal Site
         genresArr=[];
-        jQuery.each(movies, function(index, movie) {
-          jQuery.each(movie.field_genres, function(index, genre) {
+        jQuery.each(blogs, function(index, blog) {
+          jQuery.each(blog.field_genres, function(index, genre) {
             if(jQuery.inArray(genre.value.toLowerCase(), genresArr) === -1){
               genresArr.push(genre.value.toLowerCase());
             };
@@ -42,24 +42,24 @@ var movieList = Vue.extend({
   }
 });
 
-var singleMovie = Vue.extend({
-  template: '#single-movie-template',
+var singleblog = Vue.extend({
+  template: '#single-blog-template',
 
   data: function() {
     return {
-      movie: ''
+      blog: ''
     }
   },
 
   ready: function() {
-    this.getTheMovie();
+    this.getTheblog();
   },
 
   methods: {
-    getTheMovie: function() {
-      this.$http.get(apiURL + '/' + this.$route.params.movieID , function(movie) {
-        this.$set('movie', movie);
-        console.log(JSON.stringify(movie));
+    getTheblog: function() {
+      this.$http.get(apiURL + '/' + this.$route.params.blogID , function(blog) {
+        this.$set('blog', blog);
+        console.log(JSON.stringify(blog));
       })
     }
   }
@@ -69,11 +69,11 @@ var router = new VueRouter();
 
 router.map({
   '/': {
-    component: movieList
+    component: blogList
   },
-  '/movie/:movieID': {
-    name: 'movie',
-    component: singleMovie
+  '/blog/:blogID': {
+    name: 'blog',
+    component: singleblog
   }
 });
 
