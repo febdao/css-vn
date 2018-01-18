@@ -1,0 +1,141 @@
+@import url(http://fonts.googleapis.com/css?family=Questrial|Playfair+Display:400,700);
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after {display: table;  content: ''; }
+.clearfix:after { clear: both; }
+
+body {
+	background: #fff;
+	color: #333;
+	font-size: 1em;
+	font-family: 'Questrial', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+a {
+	outline: none;
+	color: rgb(160, 148, 147);
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	color: rgb(197, 135, 130);
+}
+
+.mobile-note {
+	position: absolute;
+	bottom: 1em;
+	color: #fff;
+	font-size: 1.15em;
+	text-align: center;
+	width: 100%;
+	padding: 1em;
+	background: #fb7f93;
+	display: none;
+	font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+.feature {
+	text-align: center;
+	height: 100vh;
+	overflow: hidden;
+	background: #000;
+	background-size: auto 100vh;
+}
+
+.feature__content {
+	margin: 0.5em 0 0;
+	letter-spacing: -1px;
+	line-height: 1;
+	position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+	color: #fff;
+	font-family: 'Playfair Display', Georgia, serif;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.feature__heading {
+	font-weight: 400;
+	font-size: 4.25em;
+  width: 100%;
+}
+
+.feature__text {
+	display: block;
+	padding: 1em;
+	color: #3a3231;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	font-weight: 400;
+	letter-spacing: 3px;
+	text-shadow: none;
+	font-family: 'Questrial', 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: rgba(255,255,255,.6);
+  width: 100%;
+}
+
+.feature__link {
+  background: rgba(0,0,0,.8);
+  display: block;
+  padding: 10px;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.hero {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	overflow: hidden;
+  opacity: .7;
+}
+
+.hero__imgwrap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.hero__imgwrap::after {
+	content: '';
+	position: absolute;
+	background: rgba(76,0,1,0.1);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+.hero__img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: auto;
+	height: 100vh;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	transform: translate3d(-50%,-50%,0);
+}
