@@ -1,34 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <meta name="description" content="Website chia sẻ bài viết, kinh nghiệm và trao đổi kiến thức về Front-end Việt Nam">
-    <meta name="keywords" content="Front-end, blog, template, html, twig, mustache, css, sass, scss, less, js, javascipt, jQuery, angular Js, react Js, Vue Js, Việt Nam">
-    <meta property="og:url"                content="http://css-vn.com" />
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="Blog chính thức của CSS-VN | Front-end Việt Nam" />
-    <meta property="og:description"        content="Website chia sẻ bài viết, kinh nghiệm và trao đổi kiến thức về Front-end Việt Nam" />
-    <meta property="og:image"              content="http://css-vn.com/images/banner.png" />
-    <title>CSS-VN | Blog của Front-end Developer Việt Nam</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/tilteffect.css">
-    <link rel="stylesheet" href="css/demo.css">
-  </head>
-  <body>
-    <div class="feature">
-      <div class="hero">
-  			<div class="hero__imgwrap">
-  				<img class="hero__img tilt-effect" data-tilt-options='{ "opacity" : 0.6, "movement": { "perspective" : 1500, "translateX" : 10, "translateY" : 10, "translateZ" : 2, "rotateX" : 3, "rotateY" : 3 } }' src="images/front-end-banner.jpg" alt="Front-end Việt Nam" />
-  			</div>
-  		</div>
-      <div class="feature__content">
-        <h1 class="feature__heading">Front-end Developer Việt Nam</h1>
-        <span class="feature__text">Blog đang trong giai đoạn hoàn thiện, mời bạn quay lại sau!</span>
-        <a class="feature__link" target="_blank" href="https://www.facebook.com/groups/144961856150835/" title="Join CSS-VN on Facebook group">Click vào đây để gia nhập nhóm chính thức trên Facebook của CSS-VN</a>
+<head>
+  <title>CSS-VN</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+  <div class="container" id="app">
+    <a v-link="{path: '/'}">Home</a>
+    <router-view></router-view>
+  </div>
+
+  <template id="movie-list-template">
+    <div class="video-list" v-show="!movie">
+      <!-- <div class="filter">
+        <input type="text" placeholder="Search title" class="form-control" v-model="liveFilter">
+        <h4>Filter by genre:</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <select name="" id="" class="form-control" v-model="genreFilter">
+              <option value="">All</option>
+              <option v-for='genre in genres' value="{{ genre }}">{{ genre | capitalize }}</option>
+            </select>
+          </div>
+        </div>
+      </div> -->
+      <br>
+      <br>
+      <br>
+      <ul class="media-list content">
+        <li class="media content__item" v-for="movie in movies | filterBy liveFilter in 'title' | filterBy genreFilter in 'field_genres'">
+          <div class="card content__image text-center">
+            <a v-link="{ name: 'movie', params: {movieID: movie.nid[0].value }}">
+              <img class="card-img-top" v-bind:src="movie.field_movie_poster[0].url" v-bind:alt="movie.field_movie_poster[0].alt">
+            </a>
+            <div class="card-body content__content text-left">
+              <h2 class="card-title content__title">
+                <a v-link="{ name: 'movie', params: {movieID: movie.nid[0].value }}">{{ movie.title[0].value }}</a>
+              </h2>
+              <p class="card-text content__description">{{{ movie.body[0].value }}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </template>
+
+  <template id="single-movie-template">
+    <div class="single-movie" v-show="movie">
+      <div class="movie-item" v-for="movieItem in movie">
+        <h2>{{ movieItem.title[0].value }}</h2>
+        <div class="single-movie__img text-center">
+          <img v-bind:src="movieItem.field_movie_poster[0].url" v-bind:alt="movieItem.field_movie_poster[0].alt">
+        </div>
+        <div class="single-movie__description">
+          {{{ movieItem.body[0].value }}}
+        </div>
       </div>
     </div>
-		<script src="js/tiltfx.js"></script>
-  </body>
+  </template>
+
+  <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/vue-resource.js" type="text/javascript" charset="utf-8"></script>
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+  <script src="js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+</body>
 </html>
