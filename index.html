@@ -17,6 +17,15 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=292300460886432';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
   <div id="app">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
       <div class="container">
@@ -75,7 +84,7 @@
   </template>
 
   <template id="single-blog-template">
-    <div class="article" v-show="blog">
+    <div class="article single" v-show="blog">
       <div class="article__item" v-for="blogItem in blog">
         <div class="article__image text-center" title="{{ blogItem.title[0].value }}" style="background-image: url({{ blogItem.field_image[0].url }})">
           <h1 class="article__heading">{{ blogItem.title[0].value }}</h1>
@@ -84,6 +93,10 @@
         <div class="article__content">
           {{{ blogItem.body[0].value }}}
         </div>
+      </div>
+      <div class="article__comments">
+        <h3 class="text-left article__comments__title">Bình Luận</h3>
+        <div class="fb-comments" data-href="https://css-vn.com/#!/blog/{{ blogID }}" data-numposts="10"></div>
       </div>
     </div>
   </template>

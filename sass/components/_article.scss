@@ -43,6 +43,11 @@
     margin-bottom: rem(50px);
     transition: all .3s;
     overflow: hidden;
+
+    .single & {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
   }
 
   &__title {
@@ -92,6 +97,26 @@
     @include susy-media(desktop) {
       margin: rem(15px -80px);
       padding: rem(10px 80px);
+    }
+  }
+
+  &__comments {
+    background: $white;
+    padding: 20px 20px;
+    text-align: center;
+
+    &__title {
+      border-bottom: 2px dashed #ddd;
+      border-top: 2px dashed #ddd;
+      padding: 10px 0;
+
+      @include susy-media(desktop) {
+        margin: rem(10px 60px);
+      }
+    }
+
+    iframe {
+      max-width: 100%;
     }
   }
 }

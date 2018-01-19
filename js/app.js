@@ -59,7 +59,7 @@ var singleblog = Vue.extend({
     getTheblog: function() {
       this.$http.get(apiURL + '/' + this.$route.params.blogID , function(blog) {
         this.$set('blog', blog);
-        console.log(JSON.stringify(blog));
+        this.$set('blogID', this.$route.params.blogID);
       })
     }
   }
