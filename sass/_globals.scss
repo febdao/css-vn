@@ -13,6 +13,18 @@ body{
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-color: #242425;
+  position: relative;
+  padding-bottom: 50px;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111;
+  padding-top: 15px;
 }
 
 *{
@@ -36,6 +48,11 @@ a {
   margin-bottom:40px;
 }
 
+pre {
+  color: #FFF;
+  padding: 20px;
+  background: #1D1F21;
+}
 
 /* =======================================================================
 ## ++ Cleafix
