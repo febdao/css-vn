@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CSS-VN</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Website chia sẻ bài viết, kinh nghiệm và trao đổi kiến thức về Front-end Việt Nam">
+  <meta name="keywords" content="Front-end, blog, template, html, twig, mustache, css, sass, scss, less, js, javascipt, jQuery, angular Js, react Js, Vue Js, Việt Nam">
+  <meta property="og:url"                content="http://css-vn.com" />
+  <meta property="og:type"               content="article" />
+  <meta property="og:title"              content="Blog chính thức của CSS-VN | Front-end Việt Nam" />
+  <meta property="og:description"        content="Website chia sẻ bài viết, kinh nghiệm và trao đổi kiến thức về Front-end Việt Nam" />
+  <meta property="og:image"              content="http://css-vn.com/images/banner.png" />
+  <title>CSS-VN | Front-end Developer Việt Nam</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 
-  <div class="container" id="app">
-    <nav class="navbar navbar-light bg-light">
-      <a v-link="{path: '/'}" class="navbar-brand">
-        CSS-VN
-      </a>
+  <div id="app">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+      <div class="container">
+        <a v-link="{path: '/'}" class="navbar-brand">CSS-VN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" v-link="{path: '/'}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            Navbar text with an inline element
+          </span>
+        </div>
+      </div>
     </nav>
-    <router-view></router-view>
+    <div id="main-content" class="container">
+      <router-view></router-view>
+    </div>
   </div>
 
   <template id="blog-list-template">
@@ -30,10 +62,8 @@
           </div>
         </div>
       </div> -->
-      <br>
-      <br>
-      <ul class="media-list content">
-        <li class="media content__item" v-for="blog in blogs">
+      <div class="media-list content">
+        <div class="media content__item" v-for="blog in blogs">
           <div class="card  content__image text-center">
             <a v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}">
               <img class="card-img-top" v-bind:src="blog.field_image[0].url" v-bind:alt="blog.field_image[0].alt">
@@ -45,8 +75,8 @@
               <p class="card-text content__description">{{{ blog.body[0].value }}}</p>
             </div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </template>
 
@@ -66,10 +96,10 @@
 
   <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/vue-resource.js" type="text/javascript" charset="utf-8"></script>
-  <script
-  src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   <script src="js/vue-router.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 </body>
