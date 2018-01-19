@@ -1,4 +1,4 @@
-apiURL = "https://dev-css-vn.pantheonsite.io/api/movies"
+apiURL = "https://dev-css-vn.pantheonsite.io/api/blogs"
 
 // Make a new component
 

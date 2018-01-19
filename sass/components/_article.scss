@@ -1,0 +1,97 @@
+.article {
+
+  &__image {
+    display: block;
+    line-height: 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-top: 50%;
+
+    @include susy-media(desktop) {
+      padding-top: 33%;
+    }
+
+    img {
+      position: absolute;
+      width: 5px;
+      height: auto;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__content {
+    font-size: rem(20px);
+    padding: rem(10px 20px);
+    background-color: $white;
+    overflow: hidden;
+
+    @include susy-media(desktop) {
+      padding: rem(10px 80px);
+    }
+
+    .theme--dark > & {
+      background-color: $black;
+      color: $white;
+    }
+  }
+
+  &__item {
+    padding-bottom: 15px;
+    margin-bottom: rem(50px);
+    transition: all .3s;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: rem(26px);
+    margin: rem(20px 0);
+    margin-top: rem(5px);
+    font-weight: bold;
+
+    @include susy-media(desktop) {
+      font-size: rem(46px);
+      line-height: 1;
+    }
+  }
+
+  &__heading {
+    background-color: rgba(255,255,255,.6);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    margin: 0;
+    text-align: left;
+
+    @include susy-media(desktop) {
+      padding: rem(20px 80px);
+    }
+  }
+
+  &__text {
+    margin-bottom: rem(20px);
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &__meta {
+    background-color: rgba($gray, .7);
+    text-transform: uppercase;
+    letter-spacing: 1;
+    margin: rem(15px -20px);
+    font-size: rem(18px);
+    display: block;
+    padding: rem(10px 20px);
+
+    @include susy-media(desktop) {
+      margin: rem(15px -80px);
+      padding: rem(10px 80px);
+    }
+  }
+}

@@ -48,11 +48,32 @@
     eg. font-size: rem(14px);
 */
 
-@function rem($target, $context: $base-font-size) {
-   @if $target == 0 { @return 0 }
-   @return $target / $context + 0rem;
+// STRIP UNIT
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
 }
-$base-font-size: 18px;
+
+// CONVERT TO REM
+@function convert-to-rem($value, $base-value: $base-font-size) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+
+  @return $value;
+}
+
+
+@function rem($values, $base-value: $base-font-size) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $rem-values: ();
+  @for $i from 1 through $max {
+    $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $rem-values;
+}
+$base-font-size: 16px;
 
 @mixin quicksand {
   font-family: 'Quicksand', sans-serif;

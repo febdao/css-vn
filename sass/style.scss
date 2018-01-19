@@ -1,11 +1,12 @@
 /* Vendor */
-@import "susy";
-@import "su";
 
 
 /* Setup */
+@import "color";
 @import "mixins";
 @import "variables";
+@import "susy";
+@import "su";
 @import "fonts";
 @import "globals";
 
@@ -14,6 +15,7 @@
 
 /* Component */
 @import "components/blog";
+@import "components/article";
 
 /* Pages */
 @import "homepage";

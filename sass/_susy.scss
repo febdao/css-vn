@@ -2,3 +2,141 @@
 // ====
 
 @import 'susy/language/susy';
+//Breakpoints
+$mobile-portrait-wide: 360px;
+$mobile-landscape: 410px;
+$tablet: 600px;
+$desktop: 1004px;
+$desktop-wide: 1200px;
+$desktop-superwide: 1440px;
+
+// Grid variables
+$container-margin-mobile: 20px;
+$container-margin-tablet: 40px;
+$container: 960px;
+$container-wide: 1180px;
+$container-superwide: 1280px;
+
+$column-mobile: 4;
+$column-tablet: 8;
+$column-desktop: 12;
+
+// Susy grid.
+$debug: false; // Set true to show the grid.
+$show-image: 'hide';
+
+@if $debug == false {
+  $show-image: 'hide';
+} @else {
+  $show-image: 'show';
+}
+
+// Grid definition for all breakpoints. Use http://gridcalculator.dk/#/1200/12/52/20 to generate the grid.
+$susy: (
+  flow: ltr,
+  math: fluid,
+  container-position: rem($container-margin-mobile),
+  container: auto,
+  columns: $column-mobile,
+  gutters: 15px / 44px,
+  column-width: false,
+  debug: (
+    image: $show-image,
+    color: rgba(#000, .25),
+    output: background,
+    toggle: top right,
+  )
+);
+
+$susy-tablet: (
+  container-position: rem($container-margin-tablet),
+  container: auto,
+  columns: $column-tablet,
+  gutters: 38px / 59px,
+  column-width: false,
+  debug: (
+    image: $show-image,
+    color: rgba(#666, .25),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+$susy-desktop: (
+  columns: $column-desktop,
+  gutters: 36px / 62px,
+  container-position: center,
+  container: rem($container),
+  debug: (
+    image: $show-image,
+    color: rgba(#999, .25),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+$susy-desktop-wide: (
+  columns: $column-desktop,
+  gutters: 36px / 62px,
+  container-position: center,
+  container: rem($container-wide),
+  debug: (
+    image: $show-image,
+    color: rgba(#999, .25),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+$susy-desktop-superwide: (
+  columns: $column-desktop,
+  gutters: 36px / 62px,
+  container-position: center,
+  container: rem($container-superwide),
+  debug: (
+    image: $show-image,
+    color: rgba(#999, .25),
+    output: background,
+    toggle: top right,
+  ),
+);
+
+// Pick specific breakpoint.
+$susy-media: (
+  // max-width: 769px
+  mobileOnly: (
+    media: screen,
+    max-width: rem($tablet - 1),
+  ),
+
+  // max-width: 1023px
+  mobileTabletOnly: (
+    media: screen,
+    max-width: rem($desktop - 1),
+  ),
+
+  // min-width: 360px
+  mobilePortraitWide: rem($mobile-portrait-wide),
+
+  // min-width: 480px
+  mobileLandscape: rem($mobile-landscape),
+
+  // min-width: 768px and max-width: 1999px
+  tabletOnly: (
+    media: screen,
+    min-width: rem($tablet),
+    max-width: rem($desktop - 1),
+  ),
+
+  // min-width: 768px
+  tablet: rem($tablet),
+
+  // min-width: 1024px
+  desktop: rem($desktop),
+
+  // min-width: 1280px
+  desktopWide: rem($desktop-wide),
+
+  // min-width: 1440px
+  desktopSuperwide: rem($desktop-superwide),
+);

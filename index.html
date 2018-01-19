@@ -17,7 +17,6 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-
   <div id="app">
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
       <div class="container">
@@ -43,36 +42,31 @@
         </div>
       </div>
     </nav>
-    <div id="main-content" class="container">
+    <div id="main-content" class="container main-content">
       <router-view></router-view>
     </div>
   </div>
 
+  <footer>
+    <p class="text-center text-light">
+      2018 © <a href="https://css-vn.com">css-vn.com</a>
+    </p>
+  </footer>
+
   <template id="blog-list-template">
     <div class="video-list" v-show="!blog">
-      <!-- <div class="filter">
-        <input type="text" placeholder="Search title" class="form-control" v-model="liveFilter">
-        <h4>Filter by genre:</h4>
-        <div class="row">
-          <div class="col-md-6">
-            <select name="" id="" class="form-control" v-model="genreFilter">
-              <option value="">All</option>
-              <option v-for='genre in genres' value="{{ genre }}">{{ genre | capitalize }}</option>
-            </select>
-          </div>
-        </div>
-      </div> -->
-      <div class="media-list content">
-        <div class="media content__item" v-for="blog in blogs">
-          <div class="card  content__image text-center">
-            <a v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}">
-              <img class="card-img-top" v-bind:src="blog.field_image[0].url" v-bind:alt="blog.field_image[0].alt">
-            </a>
-            <div class="card-body well content__content text-left">
-              <h2 class="card-title content__title">
-                <a v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}">{{ blog.title[0].value }}</a>
-              </h2>
-              <p class="card-text content__description">{{{ blog.body[0].value }}}</p>
+      <div class="article">
+        <div class="article__item" v-for="blog in blogs">
+          <a class="article__image" v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}" title="{{ blog.title[0].value }}" style="background-image: url({{ blog.field_image[0].url }})">
+            <img v-bind:src="blog.field_image[0].url" v-bind:alt="blog.title[0].value">
+          </a>
+          <div class="article__content">
+            <h2 class="article__title">
+              <a v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}">{{ blog.title[0].value }}</a>
+            </h2>
+            <span class="article__meta">Admin</span>
+            <div class="article__text">
+              {{{ blog.body[0].value }}}
             </div>
           </div>
         </div>
@@ -81,13 +75,13 @@
   </template>
 
   <template id="single-blog-template">
-    <div class="single-blog " v-show="blog">
-      <div class="blog-item" v-for="blogItem in blog">
-        <h2>{{ blogItem.title[0].value }}</h2>
-        <div class="single-blog__img text-center">
+    <div class="article" v-show="blog">
+      <div class="article__item" v-for="blogItem in blog">
+        <div class="article__image text-center" title="{{ blogItem.title[0].value }}" style="background-image: url({{ blogItem.field_image[0].url }})">
+          <h1 class="article__heading">{{ blogItem.title[0].value }}</h1>
           <img v-bind:src="blogItem.field_image[0].url" v-bind:alt="blogItem.field_image[0].alt">
         </div>
-        <div class="single-blog__description well">
+        <div class="article__content">
           {{{ blogItem.body[0].value }}}
         </div>
       </div>
