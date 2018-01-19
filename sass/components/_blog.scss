@@ -6,3 +6,99 @@
     }
   }
 }
+
+
+
+@keyframes gradient-1ziY361 {
+  0% {
+    background-position: 14% 0
+  }
+  50% {
+    background-position: 87% 100%
+  }
+  to {
+    background-position: 14% 0
+  }
+}
+
+@keyframes border-small-1-JbwU3 {
+  0% {
+    -webkit-clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 36px, 4px 36px, 4px 100%, 100% 100%, 100% 0, 0 0);
+    clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 36px, 4px 36px, 4px 100%, 100% 100%, 100% 0, 0 0)
+  }
+  25% {
+    -webkit-clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 36px, 211px 36px, 211px 100%, 100% 100%, 100% 0, 0 0);
+    clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 36px, 211px 36px, 211px 100%, 100% 100%, 100% 0, 0 0)
+  }
+  50% {
+    -webkit-clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 4px, 211px 4px, 211px 4px, 211px 4px, 100% 0, 0 0);
+    clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 4px, 211px 4px, 211px 4px, 211px 4px, 100% 0, 0 0)
+  }
+  75% {
+    -webkit-clip-path: polygon(0 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0, 0 0);
+    clip-path: polygon(0 100%, 4px 100%, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 4px, 4px 0, 0 0)
+  }
+  to {
+    -webkit-clip-path: polygon(0 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0 100%);
+    clip-path: polygon(0 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 4px 100%, 0 100%)
+  }
+}
+
+.cta-button {
+  width: 215px !important;
+  position: relative;
+  display: inline-block;
+  padding: 5px;
+  text-align: center;
+  height: 40px;
+  line-height: 1.8;
+
+  @media only screen and (min-width:992px) {
+    color: $white !important;
+  }
+}
+
+.cta-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: linear-gradient(120deg, #772522, #d34f48, #772522);
+  background-size: 400% 400%;
+  -webkit-clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 36px, 4px 36px, 4px 100%, 100% 100%, 100% 0, 0 0);
+  clip-path: polygon(0 100%, 4px 100%, 4px 4px, 211px 4px, 211px 36px, 4px 36px, 4px 100%, 100% 100%, 100% 0, 0 0);
+  animation: gradient-1ziY361 3s ease-in-out infinite, border-small-1-JbwU3 1s forwards ease-in-out reverse;
+}
+
+.cta-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: linear-gradient(120deg,#772522,#d34f48,#772522);
+  background-size: 400% 400%;
+  right: 0;
+  width: 100%;
+  animation: gradient-1ziY361 3s ease-in-out infinite;
+  transition: width .5s cubic-bezier(1,0,0,1);
+  z-index: 0;
+}
+
+.cta-button:after {
+  width: 0
+}
+
+.cta-button:hover:after {
+  left: 0;
+  right: auto;
+  width: 100% !important
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 9;
+}

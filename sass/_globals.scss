@@ -10,9 +10,9 @@ body{
   -webkit-font-smoothing: antialiased;
   padding: 0;
   font-size: $base-font-size;
+  background-image: url(http://watch-learn.com/themes/olympos/assets/images/bg-abstract.jpg);
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-color: #242425;
   position: relative;
   padding-bottom: 50px;
   min-height: 100vh;
@@ -80,3 +80,19 @@ pre {
 }
 
 .clr{clear:both;}
+
+.overlay--dark {
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    background-color: $black;
+    opacity: .4;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+  }
+}

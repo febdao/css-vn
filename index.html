@@ -17,41 +17,22 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=292300460886432';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-
   <div id="app">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+    <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
       <div class="container">
         <a v-link="{path: '/'}" class="navbar-brand">CSS-VN</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
         <div class="" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <!-- <li class="nav-item active">
-              <a class="nav-link" v-link="{path: '/'}">Home <span class="sr-only">(current)</span></a>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li> -->
           </ul>
           <span class="navbar-text">
-            <a class="feature__link" target="_blank" href="https://www.facebook.com/groups/144961856150835/" title="Join CSS-VN on Facebook group">Tham gia Group CSS-VN</a>
+            <a class="feature__link cta-button" target="_blank" href="https://www.facebook.com/groups/144961856150835/" title="Join CSS-VN group on Facebook">
+              <span>Tham gia Group CSS-VN</span>
+            </a>
           </span>
         </div>
       </div>
     </nav>
-    <div id="main-content" class="container main-content">
+    <div id="main-content" class="main-content">
       <router-view></router-view>
     </div>
   </div>
@@ -63,7 +44,10 @@
   </footer>
 
   <template id="blog-list-template">
-    <div class="video-list" v-show="!blog">
+    <div class="feature-baner text-center">
+      <h1 class="feature-baner__title">Front-end Developer Việt Nam</h1>
+    </div>
+    <div class="video-list container" v-show="!blog">
       <div class="article">
         <div class="article__item" v-for="blog in blogs">
           <a class="article__image" v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}" title="{{ blog.title[0].value }}" style="background-image: url({{ blog.field_image[0].url }})">
@@ -75,7 +59,7 @@
             </h2>
             <span class="article__meta">Admin</span>
             <div class="article__text">
-              {{{ blog.body[0].value }}}
+              {{{ blog.body[0].value | truncate 300 }}}
             </div>
           </div>
         </div>
@@ -86,17 +70,40 @@
   <template id="single-blog-template">
     <div class="article single" v-show="blog">
       <div class="article__item" v-for="blogItem in blog">
-        <div class="article__image text-center" title="{{ blogItem.title[0].value }}" style="background-image: url({{ blogItem.field_image[0].url }})">
-          <h1 class="article__heading">{{ blogItem.title[0].value }}</h1>
+        <div class="article__image text-center overlay--dark" title="{{ blogItem.title[0].value }}" style="background-image: url({{ blogItem.field_image[0].url }})">
           <img v-bind:src="blogItem.field_image[0].url" v-bind:alt="blogItem.field_image[0].alt">
+          <div class="article__heading">
+            <div class="container">
+              <h1>{{ blogItem.title[0].value }}</h1>
+            </div>
+          </div>
         </div>
-        <div class="article__content">
-          {{{ blogItem.body[0].value }}}
+        <div class="container">
+          <div class="article__content">
+            <div class="article__video" v-if="blogItem.field_video[0].value">
+              <iframe src="https://www.youtube.com/embed/{{ blogItem.field_video[0].value }}"></iframe>
+            </div>
+            <div class="article__text">
+              {{{ blogItem.body[0].value }}}
+            </div>
+          </div>
         </div>
       </div>
-      <div class="article__comments">
-        <h3 class="text-left article__comments__title">Bình Luận</h3>
-        <div class="fb-comments" data-href="https://css-vn.com/#!/blog/{{ blogID }}" data-numposts="10"></div>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=292300460886432';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        
+      <div class="container">
+        <div class="article__comments">
+          <h3 class="text-left article__comments__title">Bình Luận</h3>
+          <div class="fb-comments" data-href="https://css-vn.com/#!/blog/{{ blogID }}" data-numposts="10"></div>
+        </div>
       </div>
     </div>
   </template>
@@ -109,5 +116,6 @@
 
   <script src="js/vue-router.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/script.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
