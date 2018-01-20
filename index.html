@@ -50,7 +50,7 @@
     </div>
     <div class="video-list container" v-show="!blog">
       <div class="article">
-        <div class="article__item" v-for="blog in blogs | filterBy tagFilter">
+        <div class="article__item box-shadow" v-for="blog in blogs | filterBy tagFilter">
           <a class="article__image" v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}" title="{{ blog.title[0].value }}" style="background-image: url({{ blog.field_image[0].url }})">
             <img v-bind:src="blog.field_image[0].url" v-bind:alt="blog.title[0].value">
           </a>

@@ -139,6 +139,17 @@ pre {
     right: 0;
     pointer-events: none; }
 
+.box-shadow {
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1); }
+
+[data-align="center"] {
+  text-align: center;
+  margin: 0 auto;
+  display: block; }
+
+.navbar-brand {
+  font-size: 1.5rem; }
+
 /* Component */
 .blog__image img {
   width: 250px;
@@ -256,8 +267,7 @@ pre {
   font-size: 1.25rem;
   padding: 0.625rem 1.25rem 0rem 1.25rem;
   background-color: #fff;
-  overflow: hidden;
-  border: 1px solid #ddd; }
+  overflow: hidden; }
   @media (min-width: 62.75rem) {
     .article__content {
       padding: 0.625rem 5rem 0rem 5rem; } }
@@ -269,7 +279,6 @@ pre {
     border: none; }
 
 .article__item {
-  padding-bottom: 15px;
   margin-bottom: 3.125rem;
   transition: all .3s;
   overflow: hidden; }
@@ -314,7 +323,7 @@ pre {
     margin-bottom: 0; }
 
 .article__meta {
-  background-color: rgba(238, 238, 238, 0.7);
+  background-color: #eee;
   text-transform: uppercase;
   letter-spacing: 1;
   margin: 0.9375rem -1.25rem 0rem -1.25rem;

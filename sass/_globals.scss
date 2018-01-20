@@ -129,3 +129,17 @@ pre {
     pointer-events: none;
   }
 }
+
+.box-shadow {
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-align="center"] {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
