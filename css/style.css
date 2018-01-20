@@ -74,7 +74,33 @@ a:hover {
 pre {
   color: #FFF;
   padding: 20px;
-  background: #1D1F21; }
+  background-color: #1D1F21;
+  background-image: url("../images/code-bar-center.png");
+  background-size: auto 22px;
+  background-position: top center;
+  padding-top: 45px;
+  background-repeat: repeat-x;
+  position: relative;
+  z-index: 1;
+  border-radius: 5px; }
+  pre:before, pre:after {
+    height: 22px;
+    background-size: auto 22px;
+    background-position: top center;
+    padding-top: 45px;
+    background-repeat: repeat-x;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    content: ""; }
+  pre:before {
+    width: 76px;
+    background-image: url("../images/code-bar-left.png");
+    left: 0; }
+  pre:after {
+    width: 48px;
+    background-image: url("../images/code-bar-right.png");
+    right: 0; }
 
 /* =======================================================================
 ## ++ Cleafix
@@ -205,7 +231,7 @@ pre {
   padding-top: 50%; }
   @media (min-width: 62.75rem) {
     .article__image {
-      padding-top: 33%; } }
+      padding-top: 30%; } }
   .article__image img {
     position: absolute;
     width: 5px;
