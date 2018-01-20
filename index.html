@@ -20,7 +20,7 @@
   <div id="app">
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top">
       <div class="container">
-        <a v-link="{path: '/'}" class="navbar-brand">CSS-VN</a>
+        <a href="/" v-on:click="tagFilter = 'feb'" class="navbar-brand">CSS-VN</a>
         <div class="" id="navbarText">
           <ul class="navbar-nav mr-auto">
           </ul>
@@ -45,11 +45,12 @@
 
   <template id="blog-list-template">
     <div class="feature-baner text-center">
-      <h1 class="feature-baner__title">Front-end Developer Việt Nam</h1>
+      <h1 class="feature-baner__title" v-show="!tagFilter">Front-end Developer Việt Nam</h1>
+      <h1 class="feature-baner__title" v-show="tagFilter">Bài viết về {{ tagFilter.replace('/topic/', '').toUpperCase() }}</h1>
     </div>
     <div class="video-list container" v-show="!blog">
       <div class="article">
-        <div class="article__item" v-for="blog in blogs">
+        <div class="article__item" v-for="blog in blogs | filterBy tagFilter">
           <a class="article__image" v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}" title="{{ blog.title[0].value }}" style="background-image: url({{ blog.field_image[0].url }})">
             <img v-bind:src="blog.field_image[0].url" v-bind:alt="blog.title[0].value">
           </a>
@@ -57,10 +58,12 @@
             <h2 class="article__title">
               <a v-link="{ name: 'blog', params: {blogID: blog.nid[0].value }}">{{ blog.title[0].value }}</a>
             </h2>
-            <span class="article__meta">Admin</span>
             <div class="article__text">
               {{{ blog.body[0].value | truncate 300 }}}
             </div>
+            <span class="article__meta tag">
+              <a v-for="tag in blog.field_tags"  v-on:click="tagFilter = tag.url"  v-link="{ name: 'tag', params: {tagID: tag.url.replace('/topic/', '') }}" class="tag__item">{{ tag.url.replace('/topic/', '') }}</a>
+            </span>
           </div>
         </div>
       </div>
@@ -86,6 +89,9 @@
             <div class="article__text">
               {{{ blogItem.body[0].value }}}
             </div>
+            <span class="article__meta tag">
+              <a v-for="tag in blogItem.field_tags"  v-on:click="tagFilter = tag.url"  v-link="{ name: 'tag', params: {tagID: tag.url.replace('/topic/', '') }}" class="tag__item">{{ tag.url.replace('/topic/', '') }}</a>
+            </span>
           </div>
         </div>
       </div>
@@ -98,7 +104,7 @@
           js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.11&appId=292300460886432';
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        
+
       <div class="container">
         <div class="article__comments">
           <h3 class="text-left article__comments__title">Bình Luận</h3>

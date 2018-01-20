@@ -17,7 +17,8 @@ var blogList = Vue.extend({
       liveFilter: '',
       genreFilter: '',
       genres: '',
-      blog: ''
+      blog: '',
+      tagFilter: ''
     }
   },
 
@@ -30,6 +31,9 @@ var blogList = Vue.extend({
       this.$set('blog', '');
       this.$http.get(apiURL, function(blogs) {
         this.$set('blogs', blogs);
+        if (this.$route.params.tagID) {
+          this.$set('tagFilter', '/topic/' + this.$route.params.tagID);
+        }
 
         // Automatic get the genres from drupal Site
         genresArr=[];
@@ -78,6 +82,10 @@ router.map({
   '/blog/:blogID': {
     name: 'blog',
     component: singleblog
+  },
+  '/tag/:tagID': {
+    name: 'tag',
+    component: blogList
   }
 });
 
